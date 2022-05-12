@@ -13,7 +13,7 @@ const AddForm = (props) => {
         props.handleFormAdd(productId,productName,productQuantity)
     }
     return (
-        <Form onSubmit={onTrigger}>
+        <Form className='home_form' onSubmit={onTrigger}>
             <Row>
                 <Col>
                     <Form.Group className="mb-3">

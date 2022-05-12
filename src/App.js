@@ -51,7 +51,7 @@ function App() {
     }
     const selectedInventory = inventory.filter(function (el) {
       return (
-        el.id === receivedId) //
+        el.id === receivedId) 
     }
     );
     const unSelectedInventory = inventory.filter(function (el) {
@@ -69,6 +69,7 @@ function App() {
       selectedInventory[0].quantity += receivedQuantity;
       setInventory([...unSelectedInventory, ...selectedInventory])
       alert(`Product Id - ${selectedInventory[0].id} quantity increased`)
+      console.log(selectedInventory[0])
     }
 
 
