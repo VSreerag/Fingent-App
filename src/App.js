@@ -102,14 +102,14 @@ function App() {
       <div className="App">
         <Container fluid>
           <br />
-          <h2 className='fingent' onClick={() => console.log(inventory)}>Fingent-App</h2>
+          <h2 className='fingent'>Fingent-App</h2>
           <Row>
             <div className='home_btn'>
               <Col >
-                <Link to="/add"><Button variant="success">Add Product</Button></Link></Col>
+                <Link to="/add"><Button  variant="success">Add Product</Button></Link></Col>
               <Col>
                 <Link to="/delete">
-                  <Button variant="danger">Delete Product</Button>
+                  <Button variant="danger">Remove Product</Button>
                 </Link></Col>
               <Col>
                 <Link to="/">
