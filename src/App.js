@@ -6,15 +6,20 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+
+//Bootstrap installation
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
+//Components
 import TableComponent from './Components/Table/Table'
 import AddForm from './Components/AddForm/AddForm';
 import DeleteForm from './Components/DeleteForm/DeleteForm';
+
 function App() {
   const inventoryList = [{
     id: "1",
@@ -31,12 +36,13 @@ function App() {
     id: "3",
     name: "Sandal",
     quantity: 4
-  }
+  }                                  
   ]
   const [inventory, setInventory] = useState(inventoryList);
   const [productQuantity, setProductQuantity] = useState(0);
 
-  // Add inventory function
+  //Add form
+
   const handleFormAdd = (receivedId, receivedName, receivedQuantity) => {
     let formData = {
       id: receivedId,
@@ -45,21 +51,30 @@ function App() {
     }
     const selectedInventory = inventory.filter(function (el) {
       return (
-        el.id === receivedId)
+        el.id === receivedId) //
     }
     );
-    if (selectedInventory.length > 0) {
-      console.log(selectedInventory)
+    const unSelectedInventory = inventory.filter(function (el) {
+      return (
+        el.id !== receivedId) 
     }
+    );
     if (selectedInventory.length === 0) {
       const list = [...inventory];
       list.push(formData)
       setInventory(list)
       alert("Product Added")
     }
+    else if(selectedInventory.length > 0){
+      selectedInventory[0].quantity += receivedQuantity;
+      setInventory([...unSelectedInventory, ...selectedInventory])
+      alert(`Product Id - ${selectedInventory[0].id} quantity increased`)
+    }
 
 
   }
+
+  //Delete Form
   const handleDeleteFormSubmit = (receivedId, receivedQuantity) => {
     const unSelectedInventory = inventory.filter(function (el) {
       return (
@@ -71,14 +86,14 @@ function App() {
         el.id === receivedId)
     }
     );
-    if (selectedInventory[0].receivedQuantity > productQuantity) {
-      let newQUant = selectedInventory[0].receivedQuantity -= productQuantity;
+    if (selectedInventory[0].quantity > receivedQuantity) {
+      selectedInventory[0].quantity -= receivedQuantity;
       setInventory([...unSelectedInventory, ...selectedInventory])
-      alert("Quantity decreased")
+      alert(`Product Id - ${selectedInventory[0].id} quantity decreased`)
     }
-    if (selectedInventory[0].receivedQuantity <= productQuantity) {
+    else if (selectedInventory[0].quantity <= receivedQuantity) {
       setInventory(unSelectedInventory)
-      alert("Item deleted")
+      alert(`Product Id - ${selectedInventory[0].id} deleted`)
     }
   }
   return (
@@ -86,17 +101,19 @@ function App() {
       <div className="App">
         <Container fluid>
           <br />
-          <h2 onClick={()=>console.log(inventory)}>Test</h2>
+          <h2 className='fingent' onClick={() => console.log(inventory)}>Fingent-App</h2>
           <Row>
-            <Col>
-              <Link to="/add"><Button variant="primary">Add Product</Button></Link></Col>
-            <Col>
-              <Link to="/delete">
-                <Button variant="primary">Delete Product</Button>
-              </Link></Col>
-            <Col>
-              <Link to="/">
-                <Button variant="primary">List Product</Button></Link></Col>
+            <div className='home_btn'>
+              <Col >
+                <Link to="/add"><Button variant="success">Add Product</Button></Link></Col>
+              <Col>
+                <Link to="/delete">
+                  <Button variant="danger">Delete Product</Button>
+                </Link></Col>
+              <Col>
+                <Link to="/">
+                  <Button variant="info">List Product</Button></Link></Col>
+            </div>
           </Row>
           <br />
           <Routes>

@@ -6,6 +6,20 @@
 body{
   box-sizing: border-box;
   font-family: montserrat;  
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
+.fingent{
+  background: black;
+  font-weight: 500;
+  color: #fff;
+  padding: 20px 0px 20px 0px;
+  text-align: center;
+}
+
+.home_btn{
+  display: flex;
+  align-items: center;
+  background: #f2f2f2;
+  padding: 20px 0px 20px 0px;
+}
