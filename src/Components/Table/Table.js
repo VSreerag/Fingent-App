@@ -46,3 +46,4 @@ const TableRow = ({ data }) => {
 };
 
 export default TableComponent;
+
