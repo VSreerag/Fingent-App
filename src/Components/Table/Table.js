@@ -2,10 +2,10 @@ import React from 'react'
 import Table from 'react-bootstrap/Table';
 
 const TableComponent = ({ tableData }) => {
-    const theadData = ["Product Id", "Product Name", "Quantity"];
+    const theadData = ["Sl", "Product Id", "Product Name", "Quantity"];
     const tbodyData = [];
-    const tbodyDataCreate = tableData.forEach((element) => {
-        let item = { id: element.id, items: [element.id, element.name, element.quantity] }
+    const tbodyDataCreate = tableData.forEach((element,index) => {
+        let item = { id: element.id, items: [index+1, element.id, element.name, element.quantity] }
         tbodyData.push(item)
     });
 
@@ -46,4 +46,3 @@ const TableRow = ({ data }) => {
 };
 
 export default TableComponent;
-
