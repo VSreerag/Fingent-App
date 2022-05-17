@@ -21,7 +21,7 @@ const DeleteForm = (props) => {
     }
     const invList = props.inventory;
     return (
-        <Form onSubmit={onTrigger}>
+        <Form className="home_form" onSubmit={onTrigger}>
             {list.map((row, index) => {
                 return (
                     <Row>

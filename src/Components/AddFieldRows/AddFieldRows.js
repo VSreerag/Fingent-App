@@ -15,10 +15,10 @@ const AddFieldRows = (props) => {
         
     }
     return (
-        <Form className="home_form" className="home_form" onSubmit={onFormTrigger}>
+        <Form className="home_form" onSubmit={onFormTrigger}>
             <Form.Group className="mb-3">
                 <Form.Label>Number of products</Form.Label>
-                <Form.Control type="number" placeholder="Product number" onChange={(e) => setRows(e.target.value)} />
+                <Form.Control type="number" placeholder="Product number"   onChange={(e) => setRows(e.target.value)} />
             </Form.Group>
             <Button type="submit">Submit</Button>
         </Form>

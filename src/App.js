@@ -12,6 +12,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import { Toast } from 'bootstrap';
+import ToastContainer from 'bootstrap'
 
 import TableComponent from './Components/Table/Table';
 import AddForm from './Components/AddForm/AddForm';
@@ -77,6 +79,14 @@ function App() {
       receivedList.forEach((el) => {
         if (element.id === el.id) {
           invList[i]["quantity"] -= Number(el.quantity)
+          console.log("invList is", invList)
+          console.log("invList.Quantity is", invList[i].quantity)
+          // setInventory(invList)
+        }
+
+        if (invList[i]["quantity"] <= 0) {
+          alert(`${element.name} is Removed`)
+          invList.splice(i, 1)
           setInventory(invList)
         }
       })
@@ -88,7 +98,7 @@ function App() {
         <Container fluid>
           <br />
           <h2 className="fingent">Fingent-App</h2>
-          <Row className="home_btn">
+          <Row className="home_btn  ">
             <Col>
               <Link to="/add-rows"><Button variant="success">Add Product</Button></Link></Col>
             <Col>

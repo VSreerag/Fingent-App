@@ -19,14 +19,14 @@ const AddForm = (props) => {
         list[index][name]=value;
     }
     return (
-        <Form onSubmit={onTrigger}>
+        <Form className="home_form" onSubmit={onTrigger}>
             {list.map((row,index) => {
                 return (
                     <Row key={index}>
                         <Col>
                             <Form.Group className="mb-3">
                                 <Form.Label>Product Id</Form.Label>
-                                <Form.Control name="id" type="text" placeholder="Product Id" onChange={(e) => handleInputChange(e,index)} />
+                                <Form.Control name="id" type="text" placeholder="Product Id"  onChange={(e) => handleInputChange(e,index)} />
                             </Form.Group>
                         </Col>
                         <Col>
